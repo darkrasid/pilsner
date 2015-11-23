@@ -10,7 +10,7 @@ title: PILSNER DEV
 email: darkrasid@nate.com
 description: > 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://darkrasid.github.io/pilsner/" # the base hostname & protocol for your site
 github_username:  darkrasid
 
 # Build settings
