@@ -259,3 +259,35 @@
         }
     }
 }
+
+div.author {
+
+    overflow: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+    img {
+        max-width: 100px;
+        float: left;
+        margin-left: 30px;
+    }
+
+    .author-info {
+      margin-top: 5px;
+      margin-left: 25%;
+    }
+
+    .author-name {
+      font-size: 35px;
+      color: $title-main-color;
+    }
+
+    .author-desc {
+    
+    }
+
+}
+
+
+
+

@@ -12,6 +12,10 @@ layout: default
     {{ content }}
   </div>
 
+  {% if page.author == 'Pilsner' %}
+    {{site.pilsner}} 
+  {% endif %}
+
 </article>
 <!-- 라이브리 시티 설치 코드 -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8yNDc1OC8xNTI5">
