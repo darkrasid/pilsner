@@ -262,18 +262,31 @@
 
 div.author {
 
-    overflow: auto;
-    margin-top: 100px;
+    overflow: visible;
+    margin-top: 30px;
     margin-bottom: 50px;
+    border-top: 1px solid $head-foot-background-color;
+
+    .div-img {
+      height: 100px;
+      float: left;
+    }
+
+    span.vertical-helper {
+      display: inline-block;
+      height: 100%;
+    }
+
 
     img {
-        max-width: 100px;
-        float: left;
+        vertical-align: middle;
+        max-height: 100px;
         margin-left: 30px;
+        border-radius: 90%;
     }
 
     .author-info {
-      margin-top: 5px;
+      margin-top: 40px;
       margin-left: 25%;
     }
 
