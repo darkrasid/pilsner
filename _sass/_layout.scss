@@ -260,16 +260,40 @@
     }
 }
 
+iframe.banner-frame {
+   width: $content-width;
+   height: $content-height * 3;
+   border: 0px;
+   margin-top: 40px;
+
+   @include media-query($on-laptop) {
+     width: $on-laptop;
+     height: $on-laptop-height;
+   }
+
+   @include media-query($on-palm) {
+     width: $on-palm;
+     height: $on-palm-height;
+   }
+ }
+
 div.author {
 
     overflow: visible;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    // margin-top: 30px;
+    // margin-bottom: 50px;
     border-top: 1px solid $head-foot-background-color;
 
     .div-img {
-      height: 100px;
+      height: $content-height;
       float: left;
+      @include media-query($on-laptop) {
+        height: $on-laptop-height;
+      }
+
+      @include media-query($on-palm) {
+        height: $on-palm-height;
+      }
     }
 
     span.vertical-helper {
@@ -279,20 +303,35 @@ div.author {
 
 
     img {
-        vertical-align: middle;
-        max-height: 100px;
-        margin-left: 30px;
-        border-radius: 90%;
+      vertical-align: middle;
+      height: $content-height;
+      margin-left: 30px;
+      border-radius: 90%;
+      @include media-query($on-laptop) {
+        height: $on-laptop-height;
+      }
+
+      @include media-query($on-palm) {
+        height: $on-palm-height;
+      }
     }
 
     .author-info {
-      margin-top: 40px;
-      margin-left: 25%;
+      margin-top: 10px;
+      margin-left: 20%;
     }
 
     .author-name {
       font-size: 35px;
       color: $title-main-color;
+      @include media-query($on-laptop) {
+        font-size: 25px;
+      }
+
+      @include media-query($on-palm) {
+        font-size: 20px;
+      }
+
     }
 
     .author-desc {
