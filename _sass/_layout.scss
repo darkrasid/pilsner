@@ -261,23 +261,50 @@
 }
 
 iframe.banner-frame {
-   max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-   max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-   width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-   width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
 
-   height: $content-height * 3;
-   border: 0px;
-   margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    height: $content-height * 3;
+    border: 0px;
+    margin-top: 40px;
 
+    @extend %clearfix;
 
-   @include media-query($on-laptop) {
-       max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-       max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-       padding-right: $spacing-unit / 2;
-       padding-left: $spacing-unit / 2;
-       height: $on-laptop-height * 3;
-   }
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+        height: $on-laptop-height * 3;
+
+    }
+  
+  
+  
+   // max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+   // max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+   // width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+   // width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+   //
+   // height: $content-height * 3;
+   // border: 0px;
+   // margin-top: 40px;
+   //
+   //
+   // @include media-query($on-laptop) {
+   //     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+   //     max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+   //     padding-right: $spacing-unit / 2;
+   //     padding-left: $spacing-unit / 2;
+   //     height: $on-laptop-height * 3;
+   // }
 
 
    // @include media-query($on-laptop) {
@@ -292,6 +319,11 @@ iframe.banner-frame {
  }
 
 div.author {
+
+
+
+
+
 
     overflow: visible;
     // margin-top: 30px;
