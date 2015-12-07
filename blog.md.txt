@@ -1,0 +1,49 @@
+## Git LFS(Large file storage) 사용해보기
+
+얼마전 [Gitlab](https://about.gitlab.com/) 8.2 버전이 릴리즈되며 git-lfs를 지원한다는 말에 진행중인 프로젝트에 적용해보기로 했습니다.
+결과적으로는 꽤 오랜 시간이 걸려서야 lfs를 이용한 git 사용이 가능하도록 세팅하는데 성공했습니다. 이 삽질기는 다음에 공유하고 이번엔 삽질하며 공부한 git lfs 대해 다뤄보려 합니다.
+
+
+#### LFS?
+lfs는 large file handling을 하기 위해 만들어진 오픈이고 github에서 채택한 상태입니다.
+github에서는 lfs 도입 이유를 다음고 같이 설명하고 있습니다.
+
+>git과 같은 분산된 버전 컨트롤 시스템은 새롭고 좋은 workflows를 가능하게 합니다.
+하지만 large files를 다룰 때는 적절하지 않을 때도 있습니다.
+Distributed version control systems like Git have enabled new and powerful workflows,
+but they haven't always been practical for versioning large files
+
+git이 제공하는 분산환경에서 모든 개발자들은 프로젝트 파일 뿐만 아니라 그 파일들의 full change history를 모두 가지고 있어야 합니다.
+이와중에 거대한 binary file가 변경되는 것만으로도 레파지토리의 크기가 커지게 됩니다. 그 파일 뿐만 아니라 변경사항까지 저장하고 있기 때문이죠. 때문에 레파지토리 크기를 컨트롤하기 어려웠습니다.
+
+lfs는 이 문제를 해결하기 위해 나온 오픈소스입니다.
+
+
+#### 동작
+lfs의 핵심은 large file을 그대로 저장하지 않고 파일이 저장되어 있는 곳을 text pointer로 대체하는 것입니다. 실제 파일은 git lfs api를 통해 분리된 공간으로 저장됩니다.
+이 부분은 현재 github보다 gitlab에 lfs로 오브젝트를 저장해보면 쉽게 확인할 수 있습니다.
+![gitlab-lfs-text-pointer](https://raw.githubusercontent.com/darkrasid/pilsner/gh-pages/image/gitlab-lfs-pointer.JPG)
+
+그림이 실제로 뜨는 대신 text file이 표시되고 있습니다. oid의 sha 체크섬은 gitlab server내의 lfs object를 가르키고 있는 형태입니다.
+github에서는 lfs로 저장해도 raw에 접근하면 그림이 뜨긴 합니다만 lfs로 저장된 파일과 그냥 push 된 파일의 링크형태가 다릅니다.
+
+```
+#lfs raw link
+- https://media.githubusercontent.com/media/darkrasid/testing-lfs1/master/test-lfs.jpg
+#non lfs raw link
+- https://raw.githubusercontent.com/darkrasid/testing-lfs2/master/test-lfs.jpg
+```
+
+lfs에 저장된 file과 그냥 저장된 파일의 관리 방식이 다른 것을 알 수 있습니다.
+
+이렇게 저장하게 되면 실제 large file이 저장되는 공간이 분리되기 때문에 레파지토리를 관리하기 편해집니다.
+실제로 lfs로 저장한 프로젝트와 아닌 프로젝트의 용량 차이를 보면
+
+#### 장점
+사용자의 입장에서 어떻게 동작하느냐 보다는 이걸 쓰면 뭐가 좋냐가 더 중요하죠.
+
+이 문제를 해결하기 위해서 lfs는 대용량 파일을 바로 저장하지 않고 pointer 파일만 저장합니다.
+ 이렇게 하면 git repository에 늘어나는 것은 pointer file 뿐이기 때문에
+용량이 크게 늘어나지 않습니다.
+
+http://blog.deveo.com/storing-large-binary-files-in-git-repositories/
